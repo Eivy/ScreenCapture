@@ -1,12 +1,11 @@
 using System;
-using System.Collections.Generic;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Serialization;
-using static System.IO.Directory;
 using static System.Environment;
+using static System.IO.Directory;
 
 namespace ScreenCapture {
 
@@ -28,7 +27,7 @@ namespace ScreenCapture {
 		public int DisplayNum { get; set; }
 
 		/// <summary>キャプチャのトリガーキー</summary>
-		public List<uint> Keys { get; set; } = new List<uint> { 55 };
+		public uint[] Keys { get; set; } = new uint[] { 44u };
 
 
 		static readonly string ConfigPath = GetParent(Application.ExecutablePath) + @"\" + Application.ProductName + ".config";

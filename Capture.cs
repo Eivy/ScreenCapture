@@ -1,4 +1,5 @@
 using System.Windows.Forms;
+using System.Linq;
 
 namespace ScreenCapture {
 	class Capture {
@@ -14,7 +15,7 @@ namespace ScreenCapture {
 				if(msg != (uint)Stroke.KEY_UP) {
 					return;
 				}
-				if(config.Keys.Contains(o.vkCode)) {
+				if(config.Keys.ToList().Contains(o.vkCode)) {
 					var bmp = Display.Image(config.DisplayNum);
 					bmp.Save(config.ImagePath, config.ImageFormat);
 					bmp.Dispose();
@@ -36,10 +37,16 @@ namespace ScreenCapture {
 				Text = "Ver. " + Application.ProductVersion,
 				Enabled = false,
 			};
+			var settings = new ToolStripMenuItem { Text = "Settings..." };
+			settings.Click += (o, e) => {
+				if(new FormConfig(config).ShowDialog() == DialogResult.OK) {
+					config = Config.Read();
+				}
+			};
 			var exit = new ToolStripMenuItem { Text = "Exit" };
 			exit.Click += (o, e) => Application.Exit();
 			icon.ContextMenuStrip = new ContextMenuStrip();
-			icon.ContextMenuStrip.Items.AddRange(new[] { version, exit });
+			icon.ContextMenuStrip.Items.AddRange(new[] { version, settings, exit });
 		}
 
 	}
