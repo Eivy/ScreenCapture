@@ -62,13 +62,13 @@ namespace ScreenCapture {
 		/// <summary>フックプロシージャのハンドル</summary>
 		static IntPtr Handle;
 
-		public static void Register(Action<KBDLLHOOKSTRUCT> callback) {
+		public static void Register(Action<uint, KBDLLHOOKSTRUCT> callback) {
 			if(Handle != IntPtr.Zero) {
 				throw new Exception("Register ONLY Once");
 			}
 			var h = Marshal.GetHINSTANCE(typeof(Hook).Assembly.GetModules()[0]);
 			NativeMethods.KeyboardHookCallback c = delegate (int nCode, uint msg, ref KBDLLHOOKSTRUCT s) {
-				callback(s);
+				callback(msg, s);
 				return NativeMethods.CallNextHookEx(Handle, nCode, msg, ref s);
 			};
 			var handle = NativeMethods.SetWindowsHookEx(13, c, h, 0); // 13 = WH_KEYBOARD_LL 低水準キーボード入力イベント

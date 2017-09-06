@@ -5,11 +5,15 @@ namespace ScreenCapture {
 		Config config;
 		public Capture() {
 			config = Config.Read();
+			SetIcon();
 			Hook.Register(Process);
 		}
 
-		void Process(Hook.KBDLLHOOKSTRUCT o) {
+		void Process(uint msg, Hook.KBDLLHOOKSTRUCT o) {
 			try {
+				if(msg != (uint)Stroke.KEY_UP) {
+					return;
+				}
 				if(config.Keys.Contains(o.vkCode)) {
 					var bmp = Display.Image(config.DisplayNum);
 					bmp.Save(config.ImagePath, config.ImageFormat);
