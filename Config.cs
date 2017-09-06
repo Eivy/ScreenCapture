@@ -46,6 +46,8 @@ namespace ScreenCapture {
 						return ImageFormat.Bmp;
 					case "gif":
 						return ImageFormat.Gif;
+					case "png":
+						return ImageFormat.Png;
 					default:
 						return ImageFormat.Jpeg;
 				}

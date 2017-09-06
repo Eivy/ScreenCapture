@@ -40,12 +40,14 @@ namespace ScreenCapture {
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.triggerRemove = new System.Windows.Forms.Button();
 			this.triggerAdd = new System.Windows.Forms.Button();
+			this.png = new System.Windows.Forms.RadioButton();
 			this.groupType.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// groupType
 			// 
+			this.groupType.Controls.Add(this.png);
 			this.groupType.Controls.Add(this.gif);
 			this.groupType.Controls.Add(this.bmp);
 			this.groupType.Controls.Add(this.jpg);
@@ -200,6 +202,16 @@ namespace ScreenCapture {
 			this.triggerAdd.UseVisualStyleBackColor = true;
 			this.triggerAdd.Click += new System.EventHandler(this.triggerAdd_Click_1);
 			// 
+			// png
+			// 
+			this.png.AutoSize = true;
+			this.png.Location = new System.Drawing.Point(64, 18);
+			this.png.Name = "png";
+			this.png.Size = new System.Drawing.Size(46, 16);
+			this.png.TabIndex = 3;
+			this.png.Text = "PNG";
+			this.png.UseVisualStyleBackColor = true;
+			// 
 			// FormConfig
 			// 
 			this.AcceptButton = this.save;
@@ -251,5 +263,6 @@ namespace ScreenCapture {
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.Button triggerRemove;
 		private System.Windows.Forms.Button triggerAdd;
+		private System.Windows.Forms.RadioButton png;
 	}
 }

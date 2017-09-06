@@ -17,6 +17,9 @@ namespace ScreenCapture {
 				case "gif":
 					gif.Checked = true;
 					break;
+				case "png":
+					png.Checked = true;
+					break;
 				default:
 					jpg.Checked = true;
 					break;
