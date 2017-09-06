@@ -28,10 +28,12 @@ namespace ScreenCapture {
 		}
 
 		static void SetIcon() {
-			var icon = new NotifyIcon();
-			icon.Icon = Properties.Resources.camera;
-			icon.Visible = true;
+			var icon = new NotifyIcon {
+				Icon = Properties.Resources.camera,
+				Visible = true,
+			};
 			Application.ApplicationExit += (o, e) => icon.Dispose();
+
 			var version = new ToolStripMenuItem {
 				Text = "Ver. " + Application.ProductVersion,
 				Enabled = false,
