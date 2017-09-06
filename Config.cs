@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using static System.IO.Directory;
+using static System.Environment;
 
 namespace ScreenCapture {
 
@@ -18,7 +19,7 @@ namespace ScreenCapture {
 		public string FileName { get; set; } = "";
 
 		/// <summary>画像出力先ディレクトリ</summary>
-		public string Dir { get; set; } = GetParent(Application.ExecutablePath).ToString();
+		public string Dir { get; set; } = GetFolderPath(SpecialFolder.Desktop);
 
 		/// <summary>画像フォーマット(拡張子)</summary>
 		public string Type { get; set; } = "jpg";
